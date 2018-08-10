@@ -10,6 +10,7 @@
     flex-grow: 1;
     text-align: center;
     display: inline-block;
+    color: white;
     border: 1px solid #5F819A;
     border-top-width: 2px;
     border-bottom-width: 2px;
@@ -28,7 +29,6 @@
 .react-tabs__tab--selected {
     background: #83A8C3;
     border-bottom: none;
-    color: white;
     border-radius: 2px 2px 0 0;
 }
 
@@ -55,8 +55,16 @@
 
 .react-tabs__tab-panel {
     display: none;
+    height: 90vh;
 }
 
 .react-tabs__tab-panel--selected {
-    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.slice {
+    border-bottom: 2px solid #5F819A;
+    padding: 10px;
+    flex-grow: 1;
 }

@@ -15,7 +15,7 @@ export default class Time extends Component {
         axios.get(timeUrl)
             .then((res) => {
                 var date = new Date(timestamp * 1000 + res.data.dstOffset * 1000 + res.data.rawOffset * 1000)
-                var time = ((date.getHours() + 24) % 12 || 12) + ":" + date.getMinutes() + (date.getHours > 12 ? " PM":" AM")
+                var time = ((date.getHours() + 24) % 12 || 12) + ":" + date.getMinutes() + (date.getHours > 12 ? " AM":" PM")
                 this.setState({
                     time: time
                 })

@@ -8,19 +8,19 @@ export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            weather: ''
+            currentweather: ''
         }
     }
     componentDidMount() {
         this.setState({
-            weather: this.props.weather
+            currentweather: this.props.currentweather
         })
     }
   render() {
       var myLocations = '';
-      if (this.props.weather.length) {
-          console.log(JSON.parse(this.props.weather).list)
-          myLocations = JSON.parse(this.props.weather).list.map(location =>
+      if (this.props.currentweather.length) {
+          console.log(JSON.parse(this.props.currentweather).list)
+          myLocations = JSON.parse(this.props.currentweather).list.map(location =>
               <HomeSlice className="onefifth" data={JSON.stringify(location)}/>
           )
       }
@@ -36,7 +36,7 @@ export default class Home extends Component {
                     </TabList>
 
                     <TabPanel>
-                        {myLocations}
+                            {myLocations}
                     </TabPanel>
 
                     <TabPanel>
@@ -47,7 +47,7 @@ export default class Home extends Component {
 
                     </TabPanel>
                 </Tabs>
-                {this.state.weather}
+                {this.state.currentweather}
                 
                 
             </div>

@@ -5,7 +5,7 @@ import Time from './Time'
 export default class HomeSlice extends Component {
     render() {
         return (
-            <div>
+            <div className="slice">
                 <Time coords={JSON.parse(this.props.data).coord}/>
                 {this.props.data}
             </div>
