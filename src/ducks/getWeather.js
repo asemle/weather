@@ -4,8 +4,8 @@ const GET_WEATHER = 'GET_WEATHER';
 
 const initialState = {weather:[]}
 
-export function getWeather() {
-    const weather = axios.get(`https://swapi.co/api/people`)
+export function getWeather(url) {
+    const weather = axios.get(url)
         .then((response) => { return response.data.results })
 
     return {

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import Home from './components/Home'
 import axios from 'axios';
+import { getWeather } from './ducks/getWeather.js';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -19,14 +21,8 @@ class App extends Component {
     if (ids) {
       console.log(ids)
       const weatherurl = 'http://api.openweathermap.org/data/2.5/group?id=' + ids.filter((id) => id !== null).join(",") + '&appid=4c107beba1b1186da1182d620c8a6317&units=imperial'
-      console.log(weatherurl)
-      axios.get(weatherurl)
-
-        .then((res) => {
-          this.setState({
-            currentweather: JSON.stringify(res.data)
-          })
-        })
+      this.props.getWeather(weatherurl);
+      
     }
     else {
       navigator.geolocation.getCurrentPosition(((pos) => {
@@ -49,10 +45,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Home currentweather={this.state.currentweather}/>
+        <Home currentweather={this.props.currentweather}/>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    currentWeather: state.weather
+  }
+}
+
+export default connect(mapStateToProps, { getWeather })(App);
+
